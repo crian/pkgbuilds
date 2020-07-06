@@ -27,5 +27,6 @@ prepare() {
 package() {
     cd "$srcdir/suckless"
     make PREFIX=/usr DESTDIR="$pkgdir" install
-    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/dmenu/LICENSE"
+    install -m644 -D README "$pkgdir/usr/share/doc/dmenu/README"
 }

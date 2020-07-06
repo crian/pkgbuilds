@@ -1,7 +1,7 @@
 # Maintainer: crian <crian84@gmail.com>
 
-pkgname=dwmblocks
-pkgver=r34.7588356
+pkgname=dwmblocks-crian-git
+pkgver=r40.1e4aae5
 pkgrel=1
 pkgdesc='Modular status bar for dwm'
 arch=('any')
@@ -26,6 +26,6 @@ prepare() {
 package() {
     cd "$srcdir/suckless"
     make PREFIX=/usr DESTDIR="$pkgdir" install
-    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -m644 -D README.md "$pkgdir/usr/share/doc/$pkgname/README"
+    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/dwmblocks/LICENSE"
+    install -m644 -D README.md "$pkgdir/usr/share/doc/dwmblocks/README"
 }

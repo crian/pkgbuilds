@@ -22,14 +22,11 @@ prepare() {
     cd "$srcdir/suckless"
     echo 'Copying config.h from $startdir if it exists...'
     [ -f "${startdir}/config.h" ] && cp "${startdir}/config.h" . || true
-    echo 'Copying dwm.desktop from $startdir if it exists...'
-    [ -f "${startdir}/dwm.desktop" ] && cp "${startdir}/dwm.desktop" . || true
 }
 
 package() {
     cd "$srcdir/suckless"
     make PREFIX=/usr DESTDIR="$pkgdir" install
-    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
-    #install -m644 -D dwm.desktop "$pkgdir/usr/share/xsessions/dwm.desktop"
+    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/dwm/LICENSE"
+    install -m644 -D README "$pkgdir/usr/share/doc/dwm/README"
 }
