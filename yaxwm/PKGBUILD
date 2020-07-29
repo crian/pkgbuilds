@@ -1,0 +1,30 @@
+# Maintainer: crian <crian84@gmail.com>
+
+pkgname=yaxwm-crian-git
+pkgver=r222.8a55380
+pkgrel=1
+pkgdesc='yet another x window manager'
+arch=('x86_64')
+url="https://bitbucket.org/natemaia/yaxwm"
+license=('MIT')
+depends=('xcb-proto' 'xcb-util' 'xcb-util-wm' 'xcb-util-cursor' 'xcb-util-keysyms')
+conflicts=('yaxwm')
+provides=('yaxwm')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/yaxwm"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/yaxwm"
+    echo 'Copying yaxwm.h from $startdir if it exists...'
+    [ -f "${startdir}/yaxwm.h" ] && cp "${startdir}/yaxwm.h" . || true
+}
+
+package() {
+    cd "$srcdir/yaxwm"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+}
