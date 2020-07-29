@@ -1,5 +1,7 @@
 pkg/
 src/
 suckless/
+yaxwm/
 *.h
 *.xz
+*.zst
